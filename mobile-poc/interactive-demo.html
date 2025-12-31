@@ -257,7 +257,7 @@
             margin-right: 8px;
         }
 
-        /* Comment */
+        /* Comment - Structured Format */
         .comment-box {
             display: none;
             margin-top: 16px;
@@ -272,11 +272,43 @@
             display: block;
         }
 
-        .comment-text {
+        .comment-field {
+            margin-bottom: 12px;
+        }
+
+        .comment-field:last-child {
+            margin-bottom: 0;
+        }
+
+        .comment-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: #616161;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .comment-value {
             font-size: 14px;
             color: #212121;
             line-height: 20px;
         }
+
+        .severity-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+            margin-top: 2px;
+        }
+
+        .severity-normal { background: #4CAF50; }
+        .severity-warning { background: #FFC107; color: #212121; }
+        .severity-progressed { background: #FF9800; }
+        .severity-critical { background: #F44336; }
 
         @keyframes slideDown {
             from {
@@ -420,9 +452,9 @@
                 <div class="item-content" id="item-1">
                     <div class="voice-icon" onclick="openVoiceModal()">🎤</div>
                     <div class="keywords">
-                        <div class="keyword-chip" onclick="toggleKeyword(1, 0, 'Manufacturer plate')">Manufacturer plate</div>
-                        <div class="keyword-chip" onclick="toggleKeyword(1, 1, 'Model number')">Model number</div>
-                        <div class="keyword-chip" onclick="toggleKeyword(1, 2, 'Identification')">Identification</div>
+                        <div class="keyword-chip" onclick="toggleKeyword(1, 0, 'Missing plate')">Missing plate</div>
+                        <div class="keyword-chip" onclick="toggleKeyword(1, 1, 'Illegible')">Illegible</div>
+                        <div class="keyword-chip" onclick="toggleKeyword(1, 2, 'Damaged')">Damaged</div>
                     </div>
                     <div class="severity-buttons">
                         <div class="severity-button" onclick="selectSeverity(1, 'Normal')">
@@ -442,9 +474,7 @@
                             Critical
                         </div>
                     </div>
-                    <div class="comment-box" id="comment-1">
-                        <div class="comment-text"></div>
-                    </div>
+                    <div class="comment-box" id="comment-1"></div>
                 </div>
             </div>
 
@@ -503,9 +533,7 @@
                             Critical
                         </div>
                     </div>
-                    <div class="comment-box" id="comment-5">
-                        <div class="comment-text"></div>
-                    </div>
+                    <div class="comment-box" id="comment-5"></div>
                 </div>
             </div>
 
@@ -563,20 +591,68 @@
         // State management
         const itemState = {};
 
-        // Comment templates
+        // Structured comment templates
         const commentTemplates = {
-            'Cracks_Normal': 'Gearbox housing inspected. No visible cracks or defects observed. Condition: Normal.',
-            'Cracks_Warning': 'Gearbox housing shows minor surface cracks. Monitoring recommended. Condition: Warning.',
-            'Cracks_Progressed': 'Gearbox housing exhibits progressed cracking. Repair should be scheduled. Condition: Progressed.',
-            'Cracks_Critical': 'Gearbox housing has critical structural cracks. Immediate action required. Condition: Critical.',
-            'Corrosion_Normal': 'Gearbox housing surface condition is good. No corrosion observed. Condition: Normal.',
-            'Corrosion_Warning': 'Light surface corrosion detected on gearbox housing. Monitor for progression. Condition: Warning.',
-            'Corrosion_Progressed': 'Moderate corrosion present on gearbox housing. Surface treatment required. Condition: Progressed.',
-            'Corrosion_Critical': 'Severe corrosion compromising housing integrity. Immediate replacement required. Condition: Critical.',
-            'Oil leak_Normal': 'No oil leakage detected. All seals intact. Condition: Normal.',
-            'Oil leak_Warning': 'Minor oil seepage observed at gasket. Monitor for worsening. Condition: Warning.',
-            'Oil leak_Progressed': 'Active oil leak detected. Gasket replacement recommended. Condition: Progressed.',
-            'Oil leak_Critical': 'Major oil leak present. Risk of oil loss and contamination. Immediate repair required. Condition: Critical.',
+            'Cracks_Normal': {
+                failureMode: 'Surface inspection - No defects',
+                severity: 'Normal',
+                recommendation: 'Continue routine monitoring. No action required.'
+            },
+            'Cracks_Warning': {
+                failureMode: 'Minor surface cracks detected',
+                severity: 'Warning',
+                recommendation: 'Monitor crack progression. Schedule detailed inspection within 3 months.'
+            },
+            'Cracks_Progressed': {
+                failureMode: 'Progressed structural cracking',
+                severity: 'Progressed',
+                recommendation: 'Schedule repair at next planned shutdown. Monitor stress levels closely.'
+            },
+            'Cracks_Critical': {
+                failureMode: 'Critical structural cracks - Integrity compromised',
+                severity: 'Critical',
+                recommendation: 'Immediate shutdown required. Emergency repair to prevent catastrophic failure.'
+            },
+            'Corrosion_Normal': {
+                failureMode: 'Surface condition - No corrosion',
+                severity: 'Normal',
+                recommendation: 'Maintain current protective coating schedule.'
+            },
+            'Corrosion_Warning': {
+                failureMode: 'Light surface corrosion observed',
+                severity: 'Warning',
+                recommendation: 'Apply protective coating. Monitor for progression in affected areas.'
+            },
+            'Corrosion_Progressed': {
+                failureMode: 'Moderate corrosion affecting surface integrity',
+                severity: 'Progressed',
+                recommendation: 'Surface treatment required. Remove corrosion and reapply protective coating.'
+            },
+            'Corrosion_Critical': {
+                failureMode: 'Severe corrosion - Structural degradation',
+                severity: 'Critical',
+                recommendation: 'Immediate component replacement required. Risk of material failure.'
+            },
+            'Oil leak_Normal': {
+                failureMode: 'Seal inspection - No leakage detected',
+                severity: 'Normal',
+                recommendation: 'Continue routine seal inspection schedule.'
+            },
+            'Oil leak_Warning': {
+                failureMode: 'Minor oil seepage at gasket interface',
+                severity: 'Warning',
+                recommendation: 'Monitor oil levels daily. Prepare for gasket replacement.'
+            },
+            'Oil leak_Progressed': {
+                failureMode: 'Active oil leak - Seal degradation',
+                severity: 'Progressed',
+                recommendation: 'Replace gasket/seal at next available shutdown. Check oil level daily.'
+            },
+            'Oil leak_Critical': {
+                failureMode: 'Major oil leak - Risk of contamination and equipment damage',
+                severity: 'Critical',
+                recommendation: 'Immediate shutdown and seal replacement. Prevent environmental contamination.'
+            },
         };
 
         function toggleItem(itemId) {
@@ -659,19 +735,41 @@
 
             const keyword = item.keywords[0];
             const templateKey = `${keyword}_${item.severity}`;
-            let comment = commentTemplates[templateKey];
+            let commentData = commentTemplates[templateKey];
 
-            if (!comment) {
-                comment = `Gearbox housing inspection: ${item.keywords.join(', ')} observed. Severity: ${item.severity}.`;
+            if (!commentData) {
+                commentData = {
+                    failureMode: `${item.keywords.join(', ')} observed`,
+                    severity: item.severity,
+                    recommendation: 'Further inspection recommended.'
+                };
             }
 
-            showComment(itemId, comment);
+            showComment(itemId, commentData);
         }
 
-        function showComment(itemId, text) {
+        function showComment(itemId, data) {
             const commentBox = document.getElementById(`comment-${itemId}`);
-            const commentText = commentBox.querySelector('.comment-text');
-            commentText.textContent = text;
+
+            const severityClass = `severity-${data.severity.toLowerCase()}`;
+
+            commentBox.innerHTML = `
+                <div class="comment-field">
+                    <div class="comment-label">Failure Mode</div>
+                    <div class="comment-value">${data.failureMode}</div>
+                </div>
+                <div class="comment-field">
+                    <div class="comment-label">Severity</div>
+                    <div class="comment-value">
+                        <span class="severity-badge ${severityClass}">${data.severity}</span>
+                    </div>
+                </div>
+                <div class="comment-field">
+                    <div class="comment-label">Recommendation</div>
+                    <div class="comment-value">${data.recommendation}</div>
+                </div>
+            `;
+
             commentBox.classList.add('show');
         }
 
@@ -700,10 +798,14 @@
 
                     // After 1.5 seconds, generate comment and close
                     setTimeout(() => {
-                        const comment = "Gearbox housing inspection reveals housing shows visible cracks on the outer surface near the mounting flange. Visual assessment indicates structural concerns requiring attention. Detailed examination shows surface discontinuities consistent with stress-induced cracking patterns. Recommended action: Further investigation and monitoring required to assess crack propagation risk.";
+                        const commentData = {
+                            failureMode: 'Visible structural cracks on outer housing surface near mounting flange - Stress-induced cracking pattern',
+                            severity: 'Progressed',
+                            recommendation: 'Detailed crack propagation analysis required. Schedule repair at next shutdown. Monitor stress levels and vibration. Perform non-destructive testing (NDT) to assess crack depth and severity.'
+                        };
 
                         // Show comment in item 5 (or current expanded item)
-                        showComment(5, comment);
+                        showComment(5, commentData);
 
                         // Close modal
                         setTimeout(() => {
