@@ -1,23 +1,23 @@
 /**
- * Expandable Checklist Item Component
- * Shows item title, status, and expands to show keywords and severity selection
+ * Expandable Checklist Item Component - Minimalistic Design
+ * Auto-generates comments when keywords + severity are selected
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
-  Animated,
   LayoutAnimation,
   Platform,
   UIManager,
 } from 'react-native';
-import { ChecklistItem as ChecklistItemType, SeverityLevel, SEVERITY_COLORS } from '../types';
+import { ChecklistItem as ChecklistItemType, SeverityLevel } from '../types';
 import { KeywordSelector } from './KeywordSelector';
 import { SeverityPicker } from './SeverityPicker';
 import { CommentGenerator } from './CommentGenerator';
+import { COMMENT_TEMPLATES } from '../data/mockData';
 
 // Enable LayoutAnimation on Android
 if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
@@ -40,6 +40,19 @@ export const ChecklistItem: React.FC<Props> = ({ item, onUpdate }) => {
     setIsExpanded(!isExpanded);
   };
 
+  const generateQuickComment = (keywords: string[], severity: SeverityLevel) => {
+    const primaryKeyword = keywords[0];
+    const templateKey = `${primaryKeyword}_${severity}`;
+    let comment = COMMENT_TEMPLATES[templateKey];
+
+    if (!comment) {
+      // Generate a basic comment if no template matches
+      comment = `${item.title} inspection: ${keywords.join(', ')} observed. Severity: ${severity}.`;
+    }
+
+    setGeneratedComment(comment);
+  };
+
   const handleKeywordToggle = (keyword: string) => {
     let newKeywords: string[];
     if (selectedKeywords.includes(keyword)) {
@@ -53,11 +66,24 @@ export const ChecklistItem: React.FC<Props> = ({ item, onUpdate }) => {
     }
     setSelectedKeywords(newKeywords);
     onUpdate?.(item.id, newKeywords, selectedSeverity);
+
+    // Auto-generate comment if both keywords and severity are selected
+    if (newKeywords.length > 0 && selectedSeverity) {
+      generateQuickComment(newKeywords, selectedSeverity);
+    } else if (newKeywords.length === 0) {
+      // Clear comment if no keywords selected
+      setGeneratedComment('');
+    }
   };
 
   const handleSeveritySelect = (severity: SeverityLevel) => {
     setSelectedSeverity(severity);
     onUpdate?.(item.id, selectedKeywords, severity);
+
+    // Auto-generate comment if both keywords and severity are selected
+    if (selectedKeywords.length > 0) {
+      generateQuickComment(selectedKeywords, severity);
+    }
   };
 
   const handleCommentGenerated = (comment: string) => {
@@ -92,43 +118,36 @@ export const ChecklistItem: React.FC<Props> = ({ item, onUpdate }) => {
         </View>
       </TouchableOpacity>
 
-      {/* Expanded Content */}
+      {/* Expanded Content - Minimalistic */}
       {isExpanded && (
         <View style={styles.expandedContent}>
-          {/* Inspection Point Label */}
-          <Text style={styles.sectionLabel}>Inspection Point</Text>
-          <Text style={styles.inspectionPoint}>
-            Check {item.title.toLowerCase()} for defects, wear, or damage
-          </Text>
+          {/* Voice Mode Icon - Top Right */}
+          <View style={styles.voiceIconContainer}>
+            <CommentGenerator
+              itemTitle={item.title}
+              selectedKeywords={selectedKeywords}
+              selectedSeverity={selectedSeverity}
+              onCommentGenerated={handleCommentGenerated}
+            />
+          </View>
 
-          {/* Keywords Section */}
-          <Text style={styles.sectionLabel}>Select Keywords (max 3)</Text>
+          {/* Keywords - No label */}
           <KeywordSelector
             keywords={item.keywords}
             selectedKeywords={selectedKeywords}
             onToggle={handleKeywordToggle}
           />
 
-          {/* Severity Section */}
-          <Text style={styles.sectionLabel}>Severity Level</Text>
+          {/* Severity - No label */}
           <SeverityPicker
             severityLevels={item.severityLevels}
             selectedSeverity={selectedSeverity}
             onSelect={handleSeveritySelect}
           />
 
-          {/* Comment Generation Section */}
-          <CommentGenerator
-            itemTitle={item.title}
-            selectedKeywords={selectedKeywords}
-            selectedSeverity={selectedSeverity}
-            onCommentGenerated={handleCommentGenerated}
-          />
-
-          {/* Generated Comment Display */}
+          {/* Generated Comment - No label */}
           {generatedComment && (
             <View style={styles.commentContainer}>
-              <Text style={styles.commentLabel}>Generated Comment:</Text>
               <Text style={styles.commentText}>{generatedComment}</Text>
             </View>
           )}
@@ -199,33 +218,21 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderTopWidth: 1,
     borderTopColor: '#E0E0E0',
+    position: 'relative',
   },
-  sectionLabel: {
-    fontSize: 14,
-    fontWeight: '600',
-    color: '#616161',
-    marginTop: 16,
-    marginBottom: 8,
-  },
-  inspectionPoint: {
-    fontSize: 14,
-    color: '#757575',
-    fontStyle: 'italic',
-    marginBottom: 8,
+  voiceIconContainer: {
+    position: 'absolute',
+    top: 12,
+    right: 12,
+    zIndex: 10,
   },
   commentContainer: {
     marginTop: 16,
-    padding: 12,
+    padding: 14,
     backgroundColor: '#F5F5F5',
     borderRadius: 8,
     borderLeftWidth: 4,
     borderLeftColor: '#2196F3',
-  },
-  commentLabel: {
-    fontSize: 12,
-    fontWeight: '600',
-    color: '#616161',
-    marginBottom: 4,
   },
   commentText: {
     fontSize: 14,
