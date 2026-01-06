@@ -1,0 +1,212 @@
+[
+  {
+    "id": "RPT-001",
+    "date": "2025-11-15",
+    "technician": "John Smith",
+    "equipment": "HVAC Unit A-12",
+    "location": "Building 3, Floor 2",
+    "issues": [
+      {
+        "category": "Cooling System",
+        "severity": "high",
+        "keywords": ["refrigerant", "leak", "pressure"],
+        "comment": "Refrigerant leak detected in primary cooling loop. Pressure reading 15% below normal operating range. Located leak at compressor outlet valve connection. Immediate repair required to prevent system failure."
+      },
+      {
+        "category": "Electrical",
+        "severity": "medium",
+        "keywords": ["wiring", "corrosion", "connection"],
+        "comment": "Minor corrosion observed on electrical connections at control panel. Connections cleaned and treated with anti-corrosion compound. Recommend replacement during next scheduled maintenance."
+      }
+    ]
+  },
+  {
+    "id": "RPT-002",
+    "date": "2025-11-18",
+    "technician": "Sarah Johnson",
+    "equipment": "Pump Station B-7",
+    "location": "Basement Level 1",
+    "issues": [
+      {
+        "category": "Mechanical",
+        "severity": "critical",
+        "keywords": ["bearing", "vibration", "noise"],
+        "comment": "Excessive vibration and noise from main bearing assembly. Vibration levels exceeded 8mm/s, well above acceptable threshold of 4.5mm/s. Bearing replacement scheduled for emergency maintenance tonight to avoid catastrophic failure."
+      },
+      {
+        "category": "Lubrication",
+        "severity": "low",
+        "keywords": ["oil", "level", "top-up"],
+        "comment": "Oil level slightly low in secondary pump reservoir. Topped up with manufacturer-specified hydraulic oil. Level within normal range after servicing."
+      }
+    ]
+  },
+  {
+    "id": "RPT-003",
+    "date": "2025-11-20",
+    "technician": "Mike Chen",
+    "equipment": "Conveyor Belt C-4",
+    "location": "Production Floor A",
+    "issues": [
+      {
+        "category": "Belt System",
+        "severity": "medium",
+        "keywords": ["belt", "alignment", "tracking"],
+        "comment": "Belt tracking issues causing intermittent misalignment. Adjusted tracking rollers and tensioning system. Belt now running centered and smooth. Recommend monitoring over next 48 hours."
+      },
+      {
+        "category": "Safety",
+        "severity": "high",
+        "keywords": ["guard", "missing", "safety"],
+        "comment": "Safety guard missing from drive pulley section. Immediate safety hazard identified. Temporary barrier installed and area cordoned off. Replacement guard ordered - ETA 3 business days."
+      }
+    ]
+  },
+  {
+    "id": "RPT-004",
+    "date": "2025-11-22",
+    "technician": "Emily Rodriguez",
+    "equipment": "Chiller Unit D-9",
+    "location": "Rooftop Mechanical",
+    "issues": [
+      {
+        "category": "Cooling System",
+        "severity": "medium",
+        "keywords": ["refrigerant", "charge", "performance"],
+        "comment": "Refrigerant charge slightly low, affecting cooling efficiency. System operating at 85% capacity. Added 2.3kg refrigerant to bring system to manufacturer specifications. Performance restored to normal levels."
+      },
+      {
+        "category": "Controls",
+        "severity": "low",
+        "keywords": ["sensor", "calibration", "reading"],
+        "comment": "Temperature sensor reading 2 degrees higher than actual. Recalibrated sensor and verified against reference thermometer. Readings now accurate within +/- 0.5 degree tolerance."
+      }
+    ]
+  },
+  {
+    "id": "RPT-005",
+    "date": "2025-11-25",
+    "technician": "David Park",
+    "equipment": "Air Compressor E-3",
+    "location": "Utility Room 2",
+    "issues": [
+      {
+        "category": "Mechanical",
+        "severity": "high",
+        "keywords": ["valve", "leak", "air"],
+        "comment": "Air leak detected at pressure relief valve. Leak rate approximately 15 CFM causing system to cycle excessively. Valve replaced with new unit. System pressure now stable at 125 PSI with normal cycle times."
+      },
+      {
+        "category": "Filtration",
+        "severity": "low",
+        "keywords": ["filter", "dirty", "replacement"],
+        "comment": "Intake air filter heavily loaded with dust and debris. Pressure drop across filter measured at 3.5 inches H2O. Filter replaced with new high-efficiency unit. Airflow restored to optimal levels."
+      }
+    ]
+  },
+  {
+    "id": "RPT-006",
+    "date": "2025-11-27",
+    "technician": "Lisa Thompson",
+    "equipment": "Boiler F-1",
+    "location": "Mechanical Room Central",
+    "issues": [
+      {
+        "category": "Combustion",
+        "severity": "critical",
+        "keywords": ["flame", "sensor", "shutdown"],
+        "comment": "Intermittent flame sensor failures causing unexpected shutdowns. Sensor cleaned and tested but continued to malfunction. Flame rod replaced and ignition sequence verified. System now operating reliably with proper flame detection."
+      },
+      {
+        "category": "Water Treatment",
+        "severity": "medium",
+        "keywords": ["water", "quality", "treatment"],
+        "comment": "Water chemistry analysis shows elevated pH and conductivity levels. Chemical treatment system adjusted and feed rates increased. Water quality parameters returning to acceptable ranges. Retest scheduled in 72 hours."
+      }
+    ]
+  },
+  {
+    "id": "RPT-007",
+    "date": "2025-11-29",
+    "technician": "Robert Kim",
+    "equipment": "Exhaust Fan G-8",
+    "location": "Kitchen Area",
+    "issues": [
+      {
+        "category": "Mechanical",
+        "severity": "medium",
+        "keywords": ["bearing", "noise", "lubrication"],
+        "comment": "Motor bearing producing excessive noise indicating wear. Bearings lubricated with high-temperature grease per manufacturer specifications. Noise level reduced significantly. Recommend bearing replacement at next major service interval."
+      },
+      {
+        "category": "Electrical",
+        "severity": "low",
+        "keywords": ["belt", "tension", "adjustment"],
+        "comment": "Drive belt tension below optimal range causing slight slippage. Belt tensioned to proper specification and alignment verified. Fan now operating at full rated RPM with no slippage."
+      }
+    ]
+  },
+  {
+    "id": "RPT-008",
+    "date": "2025-12-01",
+    "technician": "Amanda Foster",
+    "equipment": "Cooling Tower H-2",
+    "location": "Rooftop East",
+    "issues": [
+      {
+        "category": "Water System",
+        "severity": "high",
+        "keywords": ["scale", "buildup", "cleaning"],
+        "comment": "Heavy scale buildup observed in basin and fill media. Heat transfer efficiency reduced by estimated 25%. Complete descaling and cleaning performed using approved chemical cleaning process. System efficiency restored to design parameters."
+      },
+      {
+        "category": "Structural",
+        "severity": "medium",
+        "keywords": ["corrosion", "frame", "treatment"],
+        "comment": "Surface corrosion identified on support frame members. Corroded areas wire brushed, treated with rust converter, and coated with industrial protective coating. Structural integrity verified - no compromised members found."
+      }
+    ]
+  },
+  {
+    "id": "RPT-009",
+    "date": "2025-12-03",
+    "technician": "James Wilson",
+    "equipment": "Variable Frequency Drive I-5",
+    "location": "Control Room B",
+    "issues": [
+      {
+        "category": "Electrical",
+        "severity": "critical",
+        "keywords": ["overheating", "fan", "temperature"],
+        "comment": "VFD overheating due to cooling fan failure. Internal temperature reached 85°C, approaching shutdown threshold. Cooling fan motor replaced and heat sink cleaned of dust accumulation. Operating temperature now stable at 45°C under full load."
+      },
+      {
+        "category": "Controls",
+        "severity": "low",
+        "keywords": ["parameter", "setting", "configuration"],
+        "comment": "Drive parameters found to be slightly out of optimization for current load profile. Parameters adjusted for improved efficiency and reduced harmonic distortion. Motor now running 3% more efficiently with smoother acceleration curves."
+      }
+    ]
+  },
+  {
+    "id": "RPT-010",
+    "date": "2025-12-05",
+    "technician": "Patricia Martinez",
+    "equipment": "Heat Exchanger J-6",
+    "location": "Process Area 3",
+    "issues": [
+      {
+        "category": "Heat Transfer",
+        "severity": "high",
+        "keywords": ["fouling", "efficiency", "cleaning"],
+        "comment": "Significant fouling detected on tube side reducing heat transfer efficiency by 30%. Delta-T across exchanger well below design specification. Chemical circulation cleaning performed followed by high-pressure water rinse. Efficiency restored to 95% of design capacity."
+      },
+      {
+        "category": "Mechanical",
+        "severity": "medium",
+        "keywords": ["gasket", "leak", "replacement"],
+        "comment": "Minor weeping observed at shell-side flange gasket. No immediate operational impact but potential for escalation. Gasket replaced during cleaning downtime. Flange bolts torqued to specification. No leakage detected after pressurization."
+      }
+    ]
+  }
+]

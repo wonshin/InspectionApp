@@ -1,0 +1,84 @@
+{
+  "categories": [
+    {
+      "name": "Cooling System",
+      "items": [
+        "Check refrigerant levels and pressure",
+        "Inspect for leaks in cooling loops",
+        "Verify compressor operation",
+        "Check heat exchanger condition",
+        "Measure system efficiency and delta-T"
+      ]
+    },
+    {
+      "name": "Mechanical",
+      "items": [
+        "Inspect bearings for wear and noise",
+        "Check vibration levels",
+        "Verify alignment of rotating equipment",
+        "Inspect belts for wear and tension",
+        "Check lubrication levels and condition"
+      ]
+    },
+    {
+      "name": "Electrical",
+      "items": [
+        "Inspect wiring and connections",
+        "Check for signs of overheating",
+        "Verify proper grounding",
+        "Test motor insulation resistance",
+        "Inspect control panels for corrosion"
+      ]
+    },
+    {
+      "name": "Safety",
+      "items": [
+        "Verify all guards and barriers in place",
+        "Check emergency stop functions",
+        "Inspect safety interlocks",
+        "Verify proper labeling and signage",
+        "Check for trip hazards or unsafe conditions"
+      ]
+    },
+    {
+      "name": "Controls",
+      "items": [
+        "Verify sensor calibration and accuracy",
+        "Test control system response",
+        "Check parameter settings",
+        "Verify alarm functions",
+        "Inspect HMI/interface operation"
+      ]
+    },
+    {
+      "name": "Filtration",
+      "items": [
+        "Check filter condition and pressure drop",
+        "Verify proper filter installation",
+        "Inspect bypass indicators",
+        "Check filter housing for damage",
+        "Verify filter replacement schedule"
+      ]
+    },
+    {
+      "name": "Water Treatment",
+      "items": [
+        "Test water chemistry parameters",
+        "Check chemical feed systems",
+        "Inspect for scale and corrosion",
+        "Verify blowdown operation",
+        "Test water quality sensors"
+      ]
+    },
+    {
+      "name": "Structural",
+      "items": [
+        "Inspect for corrosion and deterioration",
+        "Check mounting and support integrity",
+        "Verify proper drainage",
+        "Inspect for cracks or damage",
+        "Check weatherproofing and seals"
+      ]
+    }
+  ]
+}

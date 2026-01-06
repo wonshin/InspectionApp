@@ -1,0 +1,192 @@
+{
+  "failureModes": [
+    {
+      "category": "Cooling System",
+      "keywords": ["refrigerant", "leak", "pressure", "low"],
+      "commonCauses": [
+        "Deteriorated valve seals",
+        "Loose pipe connections",
+        "Corrosion at joints",
+        "Vibration-induced fatigue"
+      ],
+      "standardActions": [
+        "Locate leak using electronic detector",
+        "Measure refrigerant pressure",
+        "Repair or replace affected component",
+        "Evacuate and recharge system",
+        "Verify proper pressure and operation"
+      ],
+      "criticalityIndicators": ["rapid pressure drop", "complete loss of cooling", "frost formation"]
+    },
+    {
+      "category": "Mechanical",
+      "keywords": ["bearing", "vibration", "noise", "excessive"],
+      "commonCauses": [
+        "Inadequate lubrication",
+        "Contamination in bearing",
+        "Misalignment",
+        "Bearing wear or damage",
+        "Imbalance in rotating assembly"
+      ],
+      "standardActions": [
+        "Measure vibration levels",
+        "Check alignment",
+        "Inspect lubrication system",
+        "Replace bearing if necessary",
+        "Rebalance rotating components"
+      ],
+      "criticalityIndicators": ["vibration >7mm/s", "metal debris in oil", "temperature >80°C"]
+    },
+    {
+      "category": "Electrical",
+      "keywords": ["overheating", "connection", "corrosion", "resistance"],
+      "commonCauses": [
+        "Loose connections creating high resistance",
+        "Corrosion increasing contact resistance",
+        "Undersized conductors",
+        "Excessive load current",
+        "Poor ventilation"
+      ],
+      "standardActions": [
+        "Measure connection temperatures",
+        "Check torque on all connections",
+        "Clean corroded surfaces",
+        "Apply anti-corrosion compound",
+        "Verify conductor sizing"
+      ],
+      "criticalityIndicators": ["temperature >60°C", "discoloration", "burning smell"]
+    },
+    {
+      "category": "Safety",
+      "keywords": ["guard", "missing", "damaged", "hazard"],
+      "commonCauses": [
+        "Removed for maintenance and not replaced",
+        "Physical damage from impact",
+        "Improper installation",
+        "Fastener failure"
+      ],
+      "standardActions": [
+        "Immediately barricade hazardous area",
+        "Post warning signage",
+        "Install temporary protection",
+        "Order replacement guard",
+        "Verify proper installation"
+      ],
+      "criticalityIndicators": ["exposed rotating parts", "pinch points accessible", "electrical exposure"]
+    },
+    {
+      "category": "Controls",
+      "keywords": ["sensor", "calibration", "reading", "inaccurate"],
+      "commonCauses": [
+        "Sensor drift over time",
+        "Environmental exposure",
+        "Electrical interference",
+        "Physical damage to sensor",
+        "Improper mounting location"
+      ],
+      "standardActions": [
+        "Compare reading to reference standard",
+        "Recalibrate sensor per manufacturer procedure",
+        "Check sensor wiring and connections",
+        "Verify proper mounting and location",
+        "Replace sensor if beyond calibration"
+      ],
+      "criticalityIndicators": ["deviation >5%", "erratic readings", "failed verification"]
+    },
+    {
+      "category": "Lubrication",
+      "keywords": ["oil", "level", "low", "contamination"],
+      "commonCauses": [
+        "Leakage from seals or gaskets",
+        "Excessive consumption",
+        "Inadequate fill procedures",
+        "External contamination entry",
+        "Seal degradation"
+      ],
+      "standardActions": [
+        "Check for external leaks",
+        "Inspect seals and gaskets",
+        "Top up with correct specification oil",
+        "Sample oil for contamination analysis",
+        "Replace seals if necessary"
+      ],
+      "criticalityIndicators": ["level below minimum", "water contamination", "metal particles"]
+    },
+    {
+      "category": "Belt System",
+      "keywords": ["belt", "alignment", "tracking", "tension"],
+      "commonCauses": [
+        "Improper initial tension",
+        "Belt stretch over time",
+        "Pulley misalignment",
+        "Worn pulleys or idlers",
+        "Uneven loading"
+      ],
+      "standardActions": [
+        "Check belt tracking and centering",
+        "Adjust tracking rollers",
+        "Measure and adjust tension",
+        "Verify pulley alignment",
+        "Inspect belt for wear"
+      ],
+      "criticalityIndicators": ["belt running off center >2 inches", "excessive wear on edges", "slippage"]
+    },
+    {
+      "category": "Filtration",
+      "keywords": ["filter", "dirty", "clogged", "pressure"],
+      "commonCauses": [
+        "Normal accumulation over time",
+        "High particulate environment",
+        "Extended service interval",
+        "Inadequate pre-filtration",
+        "Filter degradation"
+      ],
+      "standardActions": [
+        "Measure pressure drop across filter",
+        "Inspect filter element condition",
+        "Replace filter if pressure drop excessive",
+        "Verify filter specifications correct",
+        "Adjust maintenance interval if needed"
+      ],
+      "criticalityIndicators": ["pressure drop >150% of clean", "bypass indicator active", "downstream contamination"]
+    },
+    {
+      "category": "Heat Transfer",
+      "keywords": ["fouling", "efficiency", "scale", "cleaning"],
+      "commonCauses": [
+        "Mineral precipitation from water",
+        "Biological growth",
+        "Particulate deposition",
+        "Chemical contamination",
+        "Inadequate water treatment"
+      ],
+      "standardActions": [
+        "Measure heat transfer efficiency",
+        "Calculate fouling factor",
+        "Perform chemical or mechanical cleaning",
+        "Inspect tube/plate surfaces",
+        "Verify water treatment effectiveness"
+      ],
+      "criticalityIndicators": ["efficiency <70% design", "delta-T degradation >20%", "high outlet temperature"]
+    },
+    {
+      "category": "Combustion",
+      "keywords": ["flame", "sensor", "ignition", "shutdown"],
+      "commonCauses": [
+        "Flame rod fouling from combustion deposits",
+        "Weak ignition signal",
+        "Gas pressure fluctuation",
+        "Air/fuel ratio incorrect",
+        "Sensor circuit malfunction"
+      ],
+      "standardActions": [
+        "Clean flame rod sensor",
+        "Verify flame signal strength",
+        "Check gas pressure and flow",
+        "Inspect ignition system",
+        "Test flame proving circuit"
+      ],
+      "criticalityIndicators": ["intermittent shutdowns", "failed ignition attempts >3", "no flame signal"]
+    }
+  ]
+}
